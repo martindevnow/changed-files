@@ -6,6 +6,8 @@ echo "::group::changed-files-diff-sha"
 
 echo "Resolving repository path..."
 
+echo "INPUT_PATH = $INPUT_PATH"
+
 if [[ -n $INPUT_PATH ]]; then
   REPO_DIR="$GITHUB_WORKSPACE/$INPUT_PATH"
   if [[ ! -d "$REPO_DIR" ]]; then
@@ -16,6 +18,15 @@ if [[ -n $INPUT_PATH ]]; then
 fi
 
 SERVER_URL=$(echo "$GITHUB_SERVER_URL" | awk -F/ '{print $3}')
+
+echo "GITHUB_SERVER_URL = $GITHUB_SERVER_URL"
+echo "SERVER_URL = $SERVER_URL"
+
+echo "pwd"
+pwd
+
+echo "ls"
+ls -la
 
 echo "Setting up 'temp_changed_files' remote..."
 
